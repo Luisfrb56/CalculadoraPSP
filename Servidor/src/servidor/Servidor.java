@@ -73,9 +73,14 @@ public class Servidor {
                 mensajeIda=("El resultado de la multiplicación es: "+resultado);
                 os.write(resultado.getBytes());
             }else if(b==104){
-                resultado=String.valueOf(a/c);
-                mensajeIda=("El resultado de la división es: "+resultado);
-                os.write(resultado.getBytes());
+                if(c==0){
+                    mensajeIda=("No es posible");
+                    os.write(mensajeIda.getBytes());
+                }else{
+                    resultado=String.valueOf(a/c);
+                    mensajeIda=("El resultado de la división es: "+resultado);
+                    os.write(resultado.getBytes());
+                }
             }else if(b==105){
                resultado=String.valueOf(Math.sqrt(a));
                mensajeIda=("El resultado de la Raiz es: "+resultado);
