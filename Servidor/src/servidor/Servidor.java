@@ -74,7 +74,7 @@ public class Servidor {
                 os.write(resultado.getBytes());
             }else if(b==104){
                 if(c==0){
-                    mensajeIda=("No es posible");
+                    mensajeIda=("No es posible entre 0");
                     os.write(mensajeIda.getBytes());
                 }else{
                     resultado=String.valueOf(a/c);
@@ -82,9 +82,14 @@ public class Servidor {
                     os.write(resultado.getBytes());
                 }
             }else if(b==105){
+                if(a<0){
+                    resultado="Error";
+                    os.write(resultado.getBytes());
+                }else{
                resultado=String.valueOf(Math.sqrt(a));
                mensajeIda=("El resultado de la Raiz es: "+resultado);
                os.write(resultado.getBytes());
+                }
             }
             /*
             Ahora cerramos el socket y el servidor para terminar la conexion cliente-servidor.
